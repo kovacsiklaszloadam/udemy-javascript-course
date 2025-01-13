@@ -3,5 +3,5 @@ let currentResult = defaultResult;
 
 currentResult = (currentResult + 10);
 
-let calculationDescription = "(0 = 10)"
+let calculationDescription = `${defaultResult} + 10`
 outputResult(currentResult, calculationDescription);
