@@ -13,6 +13,7 @@ function createAndLogResult(operator, resultBeforeCalc, calcNumber) {
     outputResult(currentResult, description)
 }
 
+//Logging operations to console
 function writeLog(
     operationIdentifier, 
     prevResult, 
