@@ -1,5 +1,6 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 //Gets input from input field
 function getEnteredNumber() {
@@ -17,6 +18,8 @@ function add() {
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndLogResult('+', initialResult, enteredNumber);
+    logEntries.push(enteredNumber);
+    console.log(logEntries);
 }
 
 function subtract() {
@@ -24,6 +27,8 @@ function subtract() {
     const initialResult = currentResult;
     currentResult -= enteredNumber;
     createAndLogResult('-', initialResult, enteredNumber);
+    logEntries.push(enteredNumber);
+    console.log(logEntries);
 }
 
 function multiply() {
@@ -31,6 +36,8 @@ function multiply() {
     const initialResult = currentResult;
     currentResult *= enteredNumber;
     createAndLogResult('*', initialResult, enteredNumber);
+    logEntries.push(enteredNumber);
+    console.log(logEntries);
 }
 
 function divide() {
@@ -38,6 +45,8 @@ function divide() {
     const initialResult = currentResult;
     currentResult /= enteredNumber;
     createAndLogResult('/', initialResult, enteredNumber);
+    logEntries.push(enteredNumber);
+    console.log(logEntries);
 }
 
 addBtn.addEventListener('click', add);
