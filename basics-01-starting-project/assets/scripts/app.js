@@ -31,10 +31,19 @@ function writeLog(
 }
 
 function calculateResult(calculationType) {
+    if (
+        calculationType !== 'ADD' &&
+        calculationType !== 'SUBTRACT' && 
+        calculationType !== 'MULITPLY' && 
+        calculationType !== 'DIVIDE'
+    ) {
+        return;
+    }
+    
     const enteredNumber = getEnteredNumber();
     const initialResult = currentResult;
     let operator;
-    
+
     if (calculationType === 'ADD') {
         currentResult += enteredNumber;
         operator = '+';
