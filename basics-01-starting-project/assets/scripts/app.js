@@ -30,36 +30,43 @@ function writeLog(
     console.log(logEntry);
 }
 
-function add() {
+function calculateResult(calculationType) {
     const enteredNumber = getEnteredNumber();
     const initialResult = currentResult;
-    currentResult += enteredNumber;
-    createAndLogResult('+', initialResult, enteredNumber);
-    writeLog('ADD', initialResult, enteredNumber, currentResult);
+    let operator;
+    
+    if (calculationType === 'ADD') {
+        currentResult += enteredNumber;
+        operator = '+';
+    } else if (calculationType === 'SUBTRACT') {
+        currentResult -= enteredNumber;
+        operator = '-';
+    } else if (calculationType === 'MULTIPLY') {
+        currentResult *= enteredNumber;
+        operator = '*';
+    } else if (calculationType === 'DIVIDE') {
+        currentResult /= enteredNumber;
+        operator = '/';
+    }
+
+    createAndLogResult(operator, initialResult, enteredNumber);
+    writeLog(calculationType, initialResult, enteredNumber, currentResult);
+}
+
+function add() {
+    calculateResult('ADD');
 }
 
 function subtract() {
-    const enteredNumber = getEnteredNumber();
-    const initialResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndLogResult('-', initialResult, enteredNumber);
-    writeLog('SUBTRACT', initialResult, enteredNumber, currentResult);
+    calculateResult('SUBTRACT');
 }
 
 function multiply() {
-    const enteredNumber = getEnteredNumber();
-    const initialResult = currentResult;
-    currentResult *= enteredNumber;
-    createAndLogResult('*', initialResult, enteredNumber);
-    writeLog('MULTIPLY', initialResult, enteredNumber, currentResult);
+    calculateResult('MULTIPLY');
 }
 
 function divide() {
-    const enteredNumber = getEnteredNumber();
-    const initialResult = currentResult;
-    currentResult /= enteredNumber;
-    createAndLogResult('/', initialResult, enteredNumber);
-    writeLog('DIVIDE', initialResult, enteredNumber, currentResult);
+    calculateResult('DIVIDE');
 }
 
 addBtn.addEventListener('click', add);
