@@ -31,16 +31,22 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth
     };
-    if(event === LOG_EVENT_PLAYER_ATTACK) {
-        logEntry.traget = 'MONSTER';
-    } else if(event === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-        logEntry.traget = 'MONSTER';
-    } else if(event === LOG_EVENT_MONSTER_ATTACK) {
-        logEntry.traget = 'PLAYER';
-    } else if(event === LOG_EVENT_PLAYER_HEAL) {
-        logEntry.traget = 'PLAYER';
-    }
 
+    switch (event) {
+        case LOG_EVENT_PLAYER_ATTACK: 
+            logEntry.traget = 'MONSTER';
+            break;
+        case LOG_EVENT_PLAYER_STRONG_ATTACK:
+            logEntry.traget = 'MONSTER'
+            break;
+        case LOG_EVENT_MONSTER_ATTACK:
+            logEntry.traget = 'PLAYER';
+            break;
+        case LOG_EVENT_PLAYER_HEAL:
+            logEntry.traget = 'PLAYER';
+            break;
+    }
+    
     battleLog.push(logEntry);
 }
 
