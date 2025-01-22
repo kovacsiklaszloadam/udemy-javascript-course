@@ -51,16 +51,8 @@ function reset() {
 }
 
 function attackMonster(mode) {
-    let maxDamage;
-    let logEvent;
-
-    if (mode === 'ATTACK') {
-        maxDamage = ATTACK_VALUE;
-        logEvent = LOG_EVENT_PLAYER_ATTACK;
-    } else if(mode === 'STRONG ATTACK') {
-        maxDamage = STRONG_ATTACK_VALUE;
-        logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-    }
+    const maxDamage = mode === 'ATTACK' ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+    const logEvent = mode === 'ATTACK' ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAYER_STRONG_ATTACK;
     
     const damage = dealMonsterDamage(maxDamage);
     currentMonsterHealth -= damage;
