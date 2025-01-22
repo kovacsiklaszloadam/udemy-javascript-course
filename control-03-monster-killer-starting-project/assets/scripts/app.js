@@ -21,11 +21,12 @@ if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
+let logEntry;
 
 adjustHealthBars(chosenMaxLife);
 
 function writeToLog(event, value, monsterHealth, playerHealth) {
-    let logEntry = {
+    logEntry = {
         event: event,
         value: value,
         finalMonsterHealth: monsterHealth,
@@ -34,19 +35,19 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
 
     switch (event) {
         case LOG_EVENT_PLAYER_ATTACK: 
-            logEntry.traget = 'MONSTER';
+            logEntry.target = 'MONSTER';
             break;
         case LOG_EVENT_PLAYER_STRONG_ATTACK:
-            logEntry.traget = 'MONSTER'
+            logEntry.target = 'MONSTER'
             break;
         case LOG_EVENT_MONSTER_ATTACK:
-            logEntry.traget = 'PLAYER';
+            logEntry.target = 'PLAYER';
             break;
         case LOG_EVENT_PLAYER_HEAL:
-            logEntry.traget = 'PLAYER';
+            logEntry.target = 'PLAYER';
             break;
     }
-    
+
     battleLog.push(logEntry);
 }
 
@@ -149,7 +150,14 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-    console.log(battleLog);
+    let i = 0;
+    for (const log of battleLog) {
+        console.log(`#${i}`);
+        for (const key in logEntry) {
+            console.log(`${key} => ${logEntry[key]}`);
+        }
+    i++;
+    }
 }
 
 attackBtn.addEventListener('click', attackHandler);
