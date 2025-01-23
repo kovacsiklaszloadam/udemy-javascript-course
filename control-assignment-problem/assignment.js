@@ -11,7 +11,7 @@ for (let i = numbers.length; i > 0; i--) {
     console.log(numbers[i - 1]);
 }
 
-for (el of numbers) {
+for (const el of numbers) {
     console.log(el);
 }
 
