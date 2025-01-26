@@ -1,7 +1,7 @@
 var name = 'Max';
 
 if(name === 'Max') {
-    let hobbies = ['sports', 'cooking'];
+    var hobbies = ['sports', 'cooking'];
     console.log(hobbies);
 }
 
